@@ -7,8 +7,8 @@ export const useClientStore = defineStore('Client', () => {
 
 
     // state
-    const currentPage = ref<Number>(1)
-    const totalPages = ref<Number>(5)
+    const currentPage = ref<number>(1)
+    const totalPages = ref<number>(5)
     const clients = ref<Client[]>([])
 
 
@@ -20,7 +20,7 @@ export const useClientStore = defineStore('Client', () => {
         setClients( newCLients: Client[] ) {
             clients.value = newCLients
         },
-        setPage( page: Number) {
+        setPage( page: number) {
             if (currentPage.value === page) return
             currentPage.value = page
         }

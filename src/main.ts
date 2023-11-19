@@ -14,7 +14,8 @@ type CustomQueryObserverOptions = QueryObserverOptions & { cacheTime: number };
 
 const vueQueryoptions: CustomQueryObserverOptions = {
     cacheTime: 1000 * 1,
-    refetchOnReconnect: 'always'
+    refetchOnReconnect: 'always',
+    refetchInterval: 1000 * 240
 }
 
 VueQueryPlugin.install(app, {

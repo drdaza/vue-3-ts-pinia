@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import ClientList from '../components/ClientList.vue';
 import { useRouter } from 'vue-router';
+
+import ClientList from '../components/ClientList.vue';
+import PaginationNumbers from '../components/PaginationNumbers.vue';
+import LoadingModal from '@/shared/components/LoadingModal.vue'
+import useClients from '../composables/useClients';
 
 const router = useRouter()
 // const id = ref(1)
+
+const { isLoading } = useClients()
 
 const navigateDetail = (id:string) => {
     router.push({name:'clientById', params: {id}})
@@ -15,12 +21,21 @@ const navigateDetail = (id:string) => {
     <div>
         <h1>all clients</h1>
         <!-- clientList -->
-        <!-- PaginationNumber -->
-        <!-- loadingModal -->
         <ClientList/>
+        <!-- PaginationNumber -->
+
+        <PaginationNumbers/>
+        <!-- loadingModal -->
+        <!-- <h1 v-if="isLoading">loading....</h1> -->
+        <LoadingModal v-if="isLoading"/>
+        
     </div>
 </template>
 
-<style scoped>
+<style style="scss" scoped>
+
+button:disabled{
+    cursor: not-allowed;
+}
 
 </style>
