@@ -45,9 +45,9 @@ const useClients = () => {
         },
         // getters
 
-        totalPagesNumber: computed(
-                ()=>[...new Array(totalPages.value)].map((value, index) => index + 1)
-            )
+        // totalPagesNumber: computed(
+        //         ()=>[...new Array(totalPages.value)].map((value, index) => index + 1)
+        //     )
     }
 }
 export default useClients

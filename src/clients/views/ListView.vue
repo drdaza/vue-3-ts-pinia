@@ -10,7 +10,7 @@ import useClients from '../composables/useClients';
 const router = useRouter()
 // const id = ref(1)
 
-const { isLoading } = useClients()
+const { isLoading, clients, changePage, currentPage, totalPages } = useClients()
 
 const navigateDetail = (id:string) => {
     router.push({name:'clientById', params: {id}})
@@ -21,10 +21,13 @@ const navigateDetail = (id:string) => {
     <div>
         <h1>all clients</h1>
         <!-- clientList -->
-        <ClientList/>
+        <ClientList :clients="clients"/>
         <!-- PaginationNumber -->
 
-        <PaginationNumbers/>
+        <PaginationNumbers 
+            :currentPage="currentPage"
+            :totalPages="totalPages"
+            @emitChangePage="changePage"/>
         <!-- loadingModal -->
         <!-- <h1 v-if="isLoading">loading....</h1> -->
         <LoadingModal v-if="isLoading"/>
